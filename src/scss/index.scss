@@ -1,0 +1,12 @@
+@use 'global' as g;
+@use 'fonts';
+// @import 'bootstrap/dist/css/bootstrap.min.css';
+
+h1 {
+  color: g.$primary-color;
+}
+
+.title {
+  background: url('../img/webpack.png');
+  height: 140px;
+}

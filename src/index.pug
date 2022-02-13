@@ -1,0 +1,9 @@
+extends pug/layout/base.pug
+include pug/include/_mixin
+block title
+  - var title = 'Index'
+block body
+  h1 Index
+  .container
+    +hello('Mixin')
+  include pug/include/_footer
