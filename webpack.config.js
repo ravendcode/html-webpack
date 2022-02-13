@@ -112,9 +112,9 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: 'pug-loader',
-          options: {
-            pretty: !config.isProduction
-          }
+          // options: {
+          //   pretty: !config.isProduction
+          // }
         }
       },
       {
