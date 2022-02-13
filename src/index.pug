@@ -1,9 +1,10 @@
-extends pug/layout/base.pug
-include pug/include/_mixin
+extends pug/layout/base
 block title
   - var title = 'Index'
 block body
   h1 Index
   .container
     +hello('Mixin')
+    +png('webpack')
+    +jpg('bambuk')
   include pug/include/_footer
