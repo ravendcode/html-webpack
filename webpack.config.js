@@ -18,7 +18,7 @@ if (config.template === 'pug') {
       return new HtmlWebpackPlugin({
         inject: 'body',
         filename: path.basename(pugFile, '.pug') + '.html',
-        template: pugFile,
+        template: path.basename(pugFile),
       });
     })
   ];
@@ -28,7 +28,7 @@ if (config.template === 'pug') {
       return new HtmlWebpackPlugin({
         inject: 'body',
         filename: path.basename(njkFile, '.njk') + '.html',
-        template: njkFile,
+        template: path.basename(njkFile),
       });
     })
   ];
@@ -36,11 +36,12 @@ if (config.template === 'pug') {
 
 module.exports = {
   mode: config.isProduction ? 'production' : 'development',
-  target: 'web',
+  target: config.isProduction ? 'browserslist' : 'web',
+  context: path.resolve(__dirname, 'src'),
   entry: {
     bundle: [
-      './src/js/index.js',
-      './src/scss/index.scss',
+      './js/index.js',
+      './scss/index.scss',
     ]
   },
   output: {
@@ -54,17 +55,19 @@ module.exports = {
     //   }
     // },
     // chunkFilename: 'js/vendor.[chunkhash].js',
-    // assetModuleFilename: 'assets/[name].[hash][ext][query]',
+    publicPath: '',
     clean: true,
   },
   devServer: {
+    // liveReload: true,
+    // watchFiles: ['src/**/*', 'dist/**/*'],
     static: {
-      directory: './src',
+      directory: path.resolve(__dirname, 'src'),
       watch: true
     },
     open: true,
-    // hot: true,
-    // compress: true,
+    hot: true,
+    compress: true,
     port: 8080
   },
   devtool: config.isProduction ? false : 'source-map',
@@ -104,7 +107,7 @@ module.exports = {
   },
   plugins: [
     // new HtmlWebpackPlugin({
-    //   template: './src/index.html'
+    //   template: './index.html'
     // }),
     ...config.temlatePlugin,
     new MiniCssExtractPlugin({
@@ -166,23 +169,23 @@ module.exports = {
             },
           },
           'sass-loader',
-        ],
-        generator: {
-          filename: 'css/[name].[hash][ext][query]',
-        },
+        ]
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: 'asset/resource',
         generator: {
-          filename: 'img/[name].[hash][ext][query]',
+          filename: '[path][name].[hash][ext][query]',
         },
+        // generator: {
+        //   filename: 'img/[name].[hash][ext][query]',
+        // },
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: 'asset/resource',
         generator: {
-          filename: 'font/[name].[hash][ext][query]',
+          filename: '[path][name].[hash][ext][query]',
         },
       },
       {
