@@ -8,7 +8,31 @@ const TerserPlugin = require("terser-webpack-plugin");
 
 const config = {
   isProduction: process.env.NODE_ENV === 'production',
+  template: 'pug',
+  temlatePlugin: []
 };
+
+if (config.template === 'pug') {
+  config.temlatePlugin = [
+    ...glob.sync('./src/*.pug').map(pugFile => {
+      return new HtmlWebpackPlugin({
+        inject: 'body',
+        filename: path.basename(pugFile, '.pug') + '.html',
+        template: pugFile,
+      });
+    })
+  ];
+} else {
+  config.temlatePlugin = [
+    ...glob.sync('./src/*.njk').map(njkFile => {
+      return new HtmlWebpackPlugin({
+        inject: 'body',
+        filename: path.basename(njkFile, '.njk') + '.html',
+        template: njkFile,
+      });
+    })
+  ];
+}
 
 module.exports = {
   mode: config.isProduction ? 'production' : 'development',
@@ -39,8 +63,8 @@ module.exports = {
       watch: true
     },
     open: true,
-    hot: true,
-    compress: true,
+    // hot: true,
+    // compress: true,
     port: 8080
   },
   devtool: config.isProduction ? false : 'source-map',
@@ -82,13 +106,7 @@ module.exports = {
     // new HtmlWebpackPlugin({
     //   template: './src/index.html'
     // }),
-    ...glob.sync('./src/*.pug').map(pugFile => {
-      return new HtmlWebpackPlugin({
-        inject: 'body',
-        filename: path.basename(pugFile, '.pug') + '.html',
-        template: pugFile,
-      });
-    }),
+    ...config.temlatePlugin,
     new MiniCssExtractPlugin({
       filename: 'css/[name].[contenthash].css'
     }),
@@ -115,6 +133,15 @@ module.exports = {
           // options: {
           //   pretty: !config.isProduction
           // }
+        }
+      },
+      {
+        test: /\.njk$/,
+        use: {
+          loader: 'nunjucks-render-loader',
+          options: {
+            path: path.resolve(__dirname, 'src/njk')
+          }
         }
       },
       {

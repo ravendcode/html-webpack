@@ -1,0 +1,3 @@
+{% macro img(name, alt = '', class = '') %}
+  <img class="{{ class }}" src="<%= require('./{{ name }}') %>" alt="{{ alt if alt else name.split('img/').pop().split('.')[0] }}">
+{% endmacro %}

@@ -8,5 +8,5 @@
 
 // console.log(_.defaults({ 'a': 1 }, { 'a': 3, 'b': 2 }));
 
-console.log('ind1ex1 f.js');
-console.log(process.env.NODE_ENV);
+// console.log('index.js', process.env.NODE_ENV);
+console.log(1233);
