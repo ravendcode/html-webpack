@@ -55,16 +55,24 @@ module.exports = {
     //   }
     // },
     // chunkFilename: 'js/vendor.[chunkhash].js',
-    publicPath: '',
+    // assetModuleFilename: '[path][name].[hash][ext][query]',
+    assetModuleFilename: '[path][name][ext]',
+    // publicPath: '',
     clean: true,
   },
   devServer: {
     // liveReload: true,
     // watchFiles: ['src/**/*', 'dist/**/*'],
-    static: {
-      directory: path.resolve(__dirname, 'src'),
-      watch: true
-    },
+    static: [
+      // {
+      //   directory: path.resolve(__dirname, 'dist'),
+      //   watch: true
+      // },
+      {
+        directory: path.resolve(__dirname, 'src'),
+        watch: true
+      }
+    ],
     open: true,
     hot: true,
     compress: true,
@@ -174,19 +182,16 @@ module.exports = {
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: 'asset/resource',
-        generator: {
-          filename: '[path][name].[hash][ext][query]',
-        },
         // generator: {
-        //   filename: 'img/[name].[hash][ext][query]',
+        //   filename: '[path][name].[hash][ext][query]',
         // },
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: 'asset/resource',
-        generator: {
-          filename: '[path][name].[hash][ext][query]',
-        },
+        // generator: {
+        //   filename: '[path][name].[hash][ext][query]',
+        // },
       },
       {
         test: /\.m?js$/i,

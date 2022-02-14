@@ -27,6 +27,7 @@ specifiers:
   postcss-preset-env: ^7.3.2
   pug: ^3.0.2
   pug-loader: ^2.4.0
+  rimraf: ^3.0.2
   sass: ^1.49.7
   sass-loader: ^12.4.0
   style-loader: ^3.3.1
@@ -64,6 +65,7 @@ devDependencies:
   postcss-preset-env: 7.3.2_postcss@8.4.6
   pug: 3.0.2
   pug-loader: 2.4.0_pug@3.0.2
+  rimraf: 3.0.2
   sass: 1.49.7
   sass-loader: 12.4.0_sass@1.49.7+webpack@5.68.0
   style-loader: 3.3.1_webpack@5.68.0
