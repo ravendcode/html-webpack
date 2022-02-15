@@ -13,6 +13,7 @@ specifiers:
   gulp: ^4.0.2
   gulp-beautify: ^3.0.0
   gulp-mode: ^1.1.0
+  gulp-prettier: ^4.0.0
   gulp-zip: ^5.1.0
   html-loader: ^3.1.0
   html-webpack-plugin: ^5.5.0
@@ -57,6 +58,7 @@ devDependencies:
   gulp: 4.0.2
   gulp-beautify: 3.0.0
   gulp-mode: 1.1.0
+  gulp-prettier: 4.0.0
   gulp-zip: 5.1.0_gulp@4.0.2
   html-loader: 3.1.0_webpack@5.68.0
   html-webpack-plugin: 5.5.0_webpack@5.68.0
@@ -4048,6 +4050,15 @@ packages:
       through2: 2.0.5
     dev: true
 
+  /gulp-prettier/4.0.0:
+    resolution: {integrity: sha512-REx99tBRRKJD7qLPaKpplReM9cq2vFvqhMbcUZtJEVjxGjb5Ji+gN9vi8bsM8UhnDV+l0Zrf5x6L4uZiDmvGFQ==}
+    engines: {node: '>=12'}
+    dependencies:
+      plugin-error: 1.0.1
+      prettier: 2.5.1
+      through2: 4.0.2
+    dev: true
+
   /gulp-zip/5.1.0_gulp@4.0.2:
     resolution: {integrity: sha512-XZr/y91IliK/SpR74g3TkZejGkGEmK7CSDjSghT1jXshgO+dFvpLIz9w9fpuwkew6i7k4F+G24TubNgq1ISzEw==}
     engines: {node: '>=8'}
@@ -6364,6 +6375,12 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
+  /prettier/2.5.1:
+    resolution: {integrity: sha512-vBZcPRUR5MZJwoyi3ZoyQlc1rXeEck8KgeC9AwwOn+exuxLxq5toTRDTSaVrXHxelDMHy9zlicw8u66yxoSUFg==}
+    engines: {node: '>=10.13.0'}
+    hasBin: true
+    dev: true
+
   /pretty-error/4.0.0:
     resolution: {integrity: sha512-AoJ5YMAcXKYxKhuJGdcvse+Voc6v1RgnsR3nWcYU7q4t6z0Q6T86sv5Zq8VIRbOWWFpvdGE83LtdSMNd+6Y0xw==}
     dependencies:
@@ -7638,6 +7655,12 @@ packages:
     resolution: {integrity: sha512-enaDQ4MUyP2W6ZyT6EsMzqBPZaM/avg8iuo+l2d3QCs0J+6RaqkHV/2/lOwDTueBHeJ/2LG9lrLW3d5rWPucuQ==}
     dependencies:
       inherits: 2.0.4
+      readable-stream: 3.6.0
+    dev: true
+
+  /through2/4.0.2:
+    resolution: {integrity: sha512-iOqSav00cVxEEICeD7TjLB1sueEL+81Wpzp2bY17uZjZN0pWZPuo4suZ/61VujxmqSGFfgOcNuTZ85QJwNZQpw==}
+    dependencies:
       readable-stream: 3.6.0
     dev: true
 

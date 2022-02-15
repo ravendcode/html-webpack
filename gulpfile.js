@@ -1,11 +1,21 @@
 const gulp = require('gulp');
 const beautify = require('gulp-beautify');
+const prettier = require('gulp-prettier');
 const gzip = require('gulp-zip');
 const mode = require('gulp-mode')();
 
 function beautifyHtml() {
   return gulp.src('dist/*.html')
-    .pipe(beautify.html({ indent_size: 2, extra_liners: [], preserve_newlines: false }))
+    .pipe(prettier({
+      htmlWhitespaceSensitivity: 'ignore',
+      printWidth: 128
+    }))
+    .pipe(beautify.html({
+      indent_size: 2,
+      extra_liners: [],
+      preserve_newlines: true,
+      end_with_newline: true
+    }))
     .pipe(gulp.dest('dist'));
 }
 
