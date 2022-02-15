@@ -13,7 +13,7 @@ function beautifyHtml() {
     .pipe(beautify.html({
       indent_size: 2,
       extra_liners: [],
-      preserve_newlines: true,
+      preserve_newlines: false,
       end_with_newline: true
     }))
     .pipe(gulp.dest('dist'));
