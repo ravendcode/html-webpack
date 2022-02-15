@@ -14,3 +14,4 @@
 * Install packages: `pnpm i`
 * Run for development: `pnpm start`
 * Run for production: `pnpm prod`
+* Create `build/dev.zip` and `build/prod.zip`: `pnpm build`

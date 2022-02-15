@@ -61,8 +61,6 @@ module.exports = {
     clean: true,
   },
   devServer: {
-    // liveReload: true,
-    // watchFiles: ['src/**/*', 'dist/**/*'],
     static: [
       // {
       //   directory: path.resolve(__dirname, 'dist'),
