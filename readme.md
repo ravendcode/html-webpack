@@ -2,6 +2,7 @@
 
 ## Features
 
+* BEM structure
 * Webpack
 * SASS
 * Pug or Nunjucks
