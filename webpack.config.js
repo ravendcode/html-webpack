@@ -9,7 +9,7 @@ const TerserPlugin = require("terser-webpack-plugin");
 const config = {
   isProduction: process.env.NODE_ENV === 'production',
   // pug or njk
-  template: 'njk',
+  template: 'pug',
   temlatePlugin: []
 };
 
@@ -175,8 +175,7 @@ module.exports = {
               },
             },
           },
-          'sass-loader',
-          'sass-bulk-import-loader'
+          'sass-loader'
         ]
       },
       {
