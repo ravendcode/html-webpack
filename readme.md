@@ -21,4 +21,4 @@
 
 * If need nunjucks: in `webpack.config.js` set `config.template = 'njk'`
 * If need pug: in `webpack.config.js` set `config.template = 'pug'`
-* 🎁 Read `snippet.md`
+* 🎁 Read [snippet.md](snippet.md)
