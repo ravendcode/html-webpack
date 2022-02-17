@@ -16,7 +16,7 @@ if (config.template === 'pug') {
   config.temlatePlugin = [
     ...glob.sync('./src/*.pug').map(pugFile => {
       return new HtmlWebpackPlugin({
-        inject: 'body',
+        inject: 'head',
         filename: path.basename(pugFile, '.pug') + '.html',
         template: path.basename(pugFile),
       });
@@ -26,7 +26,7 @@ if (config.template === 'pug') {
   config.temlatePlugin = [
     ...glob.sync('./src/*.njk').map(njkFile => {
       return new HtmlWebpackPlugin({
-        inject: 'body',
+        inject: 'head',
         filename: path.basename(njkFile, '.njk') + '.html',
         template: path.basename(njkFile),
       });
@@ -197,7 +197,7 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env']
+            presets: ['@babel/preset-env', '@babel/preset-react']
           }
         }
       }
