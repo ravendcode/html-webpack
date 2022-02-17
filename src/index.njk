@@ -1,7 +1,8 @@
-{% extends "layout/base.njk" %}
+{% extends "njk/base.njk" %}
 {% set app_title = "Index" %}
 {% block body %}
   <h1>{{ app_title }}</h1>
+  {% include "blocks/header/header.njk" %}
   {{ img('img/webpack.png') }}
   {{ img('img/bambuk.jpg', class='bambuk', alt='bambuk image') }}
   <img src="<%= require('./img/gulp-2x.png') %>" alt="gulp">

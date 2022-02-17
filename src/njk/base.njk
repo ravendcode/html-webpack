@@ -1,4 +1,4 @@
-{% from "_macro/helper.njk" import img %}
+{% from "./macros/_helper.njk" import img %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,10 +8,6 @@
   <title>Html Webpack - {{ app_title }}</title>
 </head>
 <body>
-  {% include "_include/header.njk" %}
-  <div class="main">
-    {% block body %}{% endblock %}
-  </div>
-  {% include "_include/footer.njk" %}
+  {% block body %}{% endblock %}
 </body>
 </html>

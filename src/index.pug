@@ -1,9 +1,9 @@
-extends pug/layout/base
+extends pug/base
 block title
   - var title = 'Index'
 block body
-  h1 Index
+  h1= title
   .container
+    include blocks/header/header.pug
     +hello('Webpack')(class="hello")
     img(src=require("./img/bambuk.jpg") alt="bambuk" width="500")
-  include pug/_include/footer

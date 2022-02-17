@@ -8,7 +8,8 @@ const TerserPlugin = require("terser-webpack-plugin");
 
 const config = {
   isProduction: process.env.NODE_ENV === 'production',
-  template: 'pug',
+  // pug or njk
+  template: 'njk',
   temlatePlugin: []
 };
 
@@ -22,7 +23,7 @@ if (config.template === 'pug') {
       });
     })
   ];
-} else {
+} else if (config.template === 'njk') {
   config.temlatePlugin = [
     ...glob.sync('./src/*.njk').map(njkFile => {
       return new HtmlWebpackPlugin({
@@ -149,7 +150,7 @@ module.exports = {
         use: {
           loader: 'nunjucks-render-loader',
           options: {
-            path: path.resolve(__dirname, 'src/njk')
+            path: path.resolve(__dirname, 'src')
           }
         }
       },
@@ -175,6 +176,7 @@ module.exports = {
             },
           },
           'sass-loader',
+          'sass-bulk-import-loader'
         ]
       },
       {

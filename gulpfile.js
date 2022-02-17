@@ -16,8 +16,8 @@ function formatHtml() {
 
 function zip() {
   return gulp.src('dist/**/*')
-    .pipe(mode.development(gzip('dev.zip')))
-    .pipe(mode.production(gzip('prod.zip')))
+    .pipe(mode.development(gzip('build.zip')))
+    .pipe(mode.production(gzip('build.min.zip')))
     .pipe(gulp.dest('build'));
 }
 
