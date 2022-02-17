@@ -16,9 +16,14 @@
 * Build for development: `pnpm dev`
 * Build for production: `pnpm prod`
 * Build for development and production in zip archive (look in `build`): `pnpm build`
-
-### Config
-
-* If need nunjucks: in `webpack.config.js` set `config.template = 'njk'`
-* If need pug: in `webpack.config.js` set `config.template = 'pug'`
 * 🎁 Read [snippet.md](snippet.md)
+
+### Config webpack.config.js
+
+``` bash
+# If need include nunjucks
+config.template = 'njk'
+
+# If need include pug
+config.template = 'pug'
+```
