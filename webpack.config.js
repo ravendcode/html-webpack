@@ -10,11 +10,11 @@ const config = {
   isProduction: process.env.NODE_ENV === 'production',
   // pug or njk
   template: 'pug',
-  temlatePlugin: []
+  templatePlugin: []
 };
 
 if (config.template === 'pug') {
-  config.temlatePlugin = [
+  config.templatePlugin = [
     ...glob.sync('./src/*.pug').map(pugFile => {
       return new HtmlWebpackPlugin({
         inject: 'head',
@@ -24,7 +24,7 @@ if (config.template === 'pug') {
     })
   ];
 } else if (config.template === 'njk') {
-  config.temlatePlugin = [
+  config.templatePlugin = [
     ...glob.sync('./src/*.njk').map(njkFile => {
       return new HtmlWebpackPlugin({
         inject: 'head',
@@ -106,7 +106,7 @@ module.exports = {
     // new HtmlWebpackPlugin({
     //   template: './index.html'
     // }),
-    ...config.temlatePlugin,
+    ...config.templatePlugin,
     new MiniCssExtractPlugin({
       filename: 'css/[name].[contenthash].css'
     }),
