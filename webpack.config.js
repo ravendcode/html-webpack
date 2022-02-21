@@ -4,34 +4,34 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const TerserPlugin = require("terser-webpack-plugin");
+const TerserPlugin = require('terser-webpack-plugin');
 
 const config = {
   isProduction: process.env.NODE_ENV === 'production',
   // pug or njk
   template: 'pug',
-  templatePlugins: []
+  templatePlugins: [],
 };
 
 if (config.template === 'pug') {
   config.templatePlugins = [
-    ...glob.sync('./src/*.pug').map(pugFile => {
+    ...glob.sync('./src/*.pug').map((pugFile) => {
       return new HtmlWebpackPlugin({
         inject: 'head',
         filename: path.basename(pugFile, '.pug') + '.html',
         template: path.basename(pugFile),
       });
-    })
+    }),
   ];
 } else if (config.template === 'njk') {
   config.templatePlugins = [
-    ...glob.sync('./src/*.njk').map(njkFile => {
+    ...glob.sync('./src/*.njk').map((njkFile) => {
       return new HtmlWebpackPlugin({
         inject: 'head',
         filename: path.basename(njkFile, '.njk') + '.html',
         template: path.basename(njkFile),
       });
-    })
+    }),
   ];
 }
 
@@ -40,10 +40,7 @@ module.exports = {
   target: config.isProduction ? 'browserslist' : 'web',
   context: path.resolve(__dirname, 'src'),
   entry: {
-    bundle: [
-      './js/index.js',
-      './scss/index.scss',
-    ]
+    bundle: ['./js/index.js', './scss/index.scss'],
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -69,13 +66,13 @@ module.exports = {
       // },
       {
         directory: path.resolve(__dirname, 'src'),
-        watch: true
-      }
+        watch: true,
+      },
     ],
     open: true,
     hot: true,
     compress: true,
-    port: 8080
+    port: 8080,
   },
   devtool: config.isProduction ? false : 'source-map',
   optimization: {
@@ -85,9 +82,9 @@ module.exports = {
         vendor: {
           test: /node_modules/,
           name: 'vendor',
-          chunks: 'all'
-        }
-      }
+          chunks: 'all',
+        },
+      },
     },
     minimize: config.isProduction,
     minimizer: [
@@ -108,7 +105,7 @@ module.exports = {
     // }),
     ...config.templatePlugins,
     new MiniCssExtractPlugin({
-      filename: 'css/[name].[contenthash].css'
+      filename: 'css/[name].[contenthash].css',
     }),
     new CopyWebpackPlugin({
       patterns: [
@@ -133,16 +130,16 @@ module.exports = {
           // options: {
           //   pretty: !config.isProduction
           // }
-        }
+        },
       },
       {
         test: /\.njk$/,
         use: {
           loader: 'nunjucks-render-loader',
           options: {
-            path: path.resolve(__dirname, 'src')
-          }
-        }
+            path: path.resolve(__dirname, 'src'),
+          },
+        },
       },
       {
         test: /\.s?css$/i,
@@ -156,7 +153,7 @@ module.exports = {
               postcssOptions: {
                 plugins: [
                   [
-                    "postcss-preset-env",
+                    'postcss-preset-env',
                     {
                       // Options
                     },
@@ -165,8 +162,8 @@ module.exports = {
               },
             },
           },
-          'sass-loader'
-        ]
+          'sass-loader',
+        ],
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
@@ -188,10 +185,10 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env', '@babel/preset-react']
-          }
-        }
-      }
-    ]
+            presets: ['@babel/preset-env', '@babel/preset-react'],
+          },
+        },
+      },
+    ],
   },
 };
